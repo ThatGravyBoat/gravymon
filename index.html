@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Pink Fluffy Unicorn Game Engine</title>
+    <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans" rel="stylesheet">
+    <link rel='stylesheet' href='unicorn.css' />
+    <script src="pinkfluffyunicorn.min.js"></script>
+  </head>
+  <body>
+    <div id="unicorn-display"></div>
+    <audio id="audio" controls="" style="visibility: hidden;">
+      <source id="source" type="audio/wav">
+    </audio>
+    <script>
+      var counter = 0;
+      function getRandomInt( number ) {
+        return Math.floor( number * Math.random() );
+      }
+
+      var a = {
+        wave_robot: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+      },
+      n = null,
+      t = null,
+      i = {},
+      o = [],
+      l = !1;
+
+    function r() {
+        ! function (e = "") {
+            Unicorn.Load("speech", "assets/speech_bubble.png"), e && (e = "_" + e);
+            n = 0
+            for (var t = 0; t < 6; t++) n + 1 < a[`wave${e}`].length && t === a[`wave${e}`][n + 1] && n++, Unicorn.Load("wave" + t, `./assets/idle${e}/wave` + ("0" + a[`wave${e}`][n]).slice(-2) + ".png")
+          }("robot");
+        Unicorn.AddObject("robot", {
+            type: "rectangle",
+            x: 400,
+            y: 492.5,
+            width: 754,
+            height: 985,
+            animations: {
+                idle: {
+                    framerate: .065,
+                    frames: [...Array(6).keys()].map(e => `wave${e}`),
+                    loop: !0
+                }
+            },
+            isStatic: !0
+        });
+        (n = Unicorn.AddOverlay("speech", "speech", 500, 200)).scale = {
+            x: 2,
+            y: 2
+        }, (t = Unicorn.AddText("speechText", "", 800, 300, {
+            fontFamily: "Gloria Hallelujah",
+            fontSize: 42,
+            fontWeight: "bold",
+            fill: "#000000"
+        })).anchor.set(.5), n.visible = !1
+    }
+
+    function c() {
+          l = !0;
+          var i = o.shift();
+          t.text = `JaxDagger is a whore`, n.visible = !0, Unicorn.PlayObjectAnimation("robot", "wave")
+    }
+    function stopMessage(){
+      n.visible = !1 //hides message
+    }
+      function Init() {
+        // Add Initialization Here
+        // Unicorn.Load( "fart", "assets/fart-2.wav" );
+        // Unicorn.Load( "yay", "assets/yay.mp3" );
+        // Unicorn.Load( "explode1", "assets/explode1.mp3" );
+        // Unicorn.Load( "explode2", "assets/explode2.mp3" );
+        // Unicorn.Load( "firework", "assets/firework.mp3" );
+        // Unicorn.Load( "unicorn", "assets/Unicorn.png" );
+        // Unicorn.Load( "ball", "assets/Ball.png" );
+
+        r()
+      }
+
+      function OnChatCommand( user, command, message, flags, extra ) {
+        // Handle Chat Commands
+        if( flags.broadcaster && command == "test" ) {
+          console.log( "!test was typed in chat" );
+        }
+        if( flags.broadcaster && command == "disconnect" ) {
+          Unicorn.DisconnectObjects( "", "ball2" );
+        }
+      }
+
+      function OnChatMessage( user, message, flags, self, extra ) {
+        // Handle Chat Messages
+        console.log(user, message, flags, self, extra );
+      }
+
+      window.addEventListener('load', () => {
+        Unicorn.Create( "unicorn-display", {
+          width: 1800,
+          height: 900,
+          // background: "#000000",// "transparent",
+          background: "transparent",
+          init: Init,
+          update: Update,
+          channel: "ThatGravyBoat",
+          onCommand: OnChatCommand,
+          onChat: OnChatMessage,
+          // screenWalls: false // Default: true
+          // gravity: { x: 0, y: 0.5 } // Default: { x: 0, y: 1 }
+        });
+      });
+    </script>
+  </body>
+</html>
