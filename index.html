@@ -74,6 +74,13 @@
         // Unicorn.Load( "firework", "assets/firework.mp3" );
         // Unicorn.Load( "unicorn", "assets/Unicorn.png" );
         // Unicorn.Load( "ball", "assets/Ball.png" );
+        Unicorn.Load({
+          "fart": "./assets/fart-2.wav",
+          "yay": "./assets/yay.mp3",
+          "explode1": "./assets/explode1.mp3",
+          "explode2": "./assets/explode2.mp3",
+          "firework": "./assets/firework.mp3"
+        });
 
         r()
       }
@@ -91,6 +98,14 @@
       function OnChatMessage( user, message, flags, self, extra ) {
         // Handle Chat Messages
         console.log(user, message, flags, self, extra );
+      }
+
+      function Update( timestamp, timeDiffInMs ) {
+        // Add Update Loop
+        // console.log( timestamp, timeDiffInMs );
+        if( timestamp > 5000 ) {
+          Unicorn.RemoveOverlay( "icon" );
+        }
       }
 
       window.addEventListener('load', () => {
