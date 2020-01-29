@@ -151,9 +151,9 @@
             stopParticles( "Confetti" + counter, 2000 );
           }
 
-          function superlaunchConfetti(numberOfTimes, imageOverride){
+          function superlaunchConfetti(numberOfTimes, imageOverride  = "" ){
                 for (let step = 0; step < numberOfTimes; step++) {
-                  launchConfetti(imageOverride = "")
+                  launchConfetti(imageOverride)
                 }
           }
 
@@ -244,7 +244,7 @@
       }
       function onSubGift( gifterUser ) {
           speechMessage('Thanks for the gift sub(s) ' + gifterUser)
-          superlaunchConfetti(5, 'gift')
+          superlaunchConfetti(10, './assets/gift.png')
       }
 
 
