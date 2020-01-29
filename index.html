@@ -233,8 +233,12 @@
       function OnChatMessage( user, message, flags, self, extra ) {
         
       }
-
-      function onCheer( user, message, bits, flags, extra ) {
+      function OnChatCommand( user, command, message, flags, extra) {
+        if( command === "testsub" && user.toLowerCase() == "thatgravyboat") {onSubGift(message)}
+        if( command === "testcheer" && user.toLowerCase() == "thatgravyboat") {onCheer(message)}
+        if( command === "testspeech" && user.toLowerCase() == "thatgravyboat") {speechMessage(message)}
+      }
+      function onCheer( user ) {
         speechMessage('Thanks for the bits ' + user)
         superlaunchConfetti(5)
       }
@@ -270,6 +274,7 @@
           update: update,
           channel: params.get( "channel" ),
           onChat: OnChatMessage,
+          onCommand: OnChatCommand,
           // screenWalls: false // Default: true
           // gravity: { x: 0, y: 0.5 } // Default: { x: 0, y: 1 }
         });
