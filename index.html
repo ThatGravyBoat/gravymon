@@ -239,11 +239,11 @@
         if( command === "testcheer" && user.toLowerCase() == "thatgravyboat") {onCheer(message)}
         if( command === "testspeech" && user.toLowerCase() == "thatgravyboat") {speechMessage(message)}
       }
-      function onCheer( user ) {
+      ComfyJS.onCheer = ( user ) => {
         speechMessage('Thanks for the bits ' + user)
         superlaunchConfetti(5)
       }
-      function onSubGift( gifterUser ) {
+      ComfyJS.onSubGift = ( gifterUser ) => {
           speechMessage('Thanks for the gift sub(s) ' + gifterUser)
           superlaunchConfetti(10, './assets/gift.png')
       }
