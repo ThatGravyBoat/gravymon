@@ -240,11 +240,7 @@
         if( command === "testspeech" && user.toLowerCase() == "thatgravyboat") {speechMessage(message)}
       }
       ComfyJS.onCheer = ( user, message, bits, flags, extra ) => {
-        if(user == "debug1") {console.log(user)}
-        if(user == "debug2") {console.log(message)}
-        if(user == "debug3") {console.log(bits)}
-        if(user == "debug4") {console.log(flags)}
-        if(user == "debug5") {console.log(extra)}
+        console.log(user)
         speechMessage('Thanks for the bits ' + user.username)
         superlaunchConfetti(5)
       }
