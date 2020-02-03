@@ -241,7 +241,7 @@
       }
       ComfyJS.onCheer = ( user, message, bits, flags, extra ) => {
         console.log( user, message, bits, flags, extra )
-        speechMessage('Thanks for the bits ' + user)
+        speechMessage('Thanks for the bits ' + extra.displayName)
         superlaunchConfetti(5)
       }
       ComfyJS.onSubGift = ( gifterUser ) => {
