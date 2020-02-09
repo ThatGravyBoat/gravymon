@@ -238,7 +238,7 @@
         if( command === "testsub" && user.toLowerCase() == "thatgravyboat") {onSubGift(message)}
         if( command === "testcheer" && user.toLowerCase() == "thatgravyboat") {onCheer(message)}
         if( command === "testspeech" && user.toLowerCase() == "thatgravyboat") {speechMessage(message)}
-        if( command === "testtts" && user.toLowerCase() == "thatgravyboat") {speakMessage(message)}
+        if( command === "tts" && user.toLowerCase() == "thatgravyboat") {speakMessage(message)}
       }
       ComfyJS.onCheer = ( user, message, bits, flags, extra ) => {
         speechMessage('Thanks for the bits ' + bits.displayName)
