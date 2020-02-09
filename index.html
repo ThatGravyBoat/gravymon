@@ -250,7 +250,7 @@
       }
 
 
-      async function speakMessage( message, ttsVoice = "Amy" ) {
+      async function speakMessage( message, ttsVoice = "layla" ) {
         let speak = await fetch( `https://api.streamelements.com/kappa/v2/speech?voice=${ttsVoice}&text=` + encodeURIComponent( message.trim() ) );
       	if( speak.status != 200 ) {
       		// await speak.text();
