@@ -179,6 +179,7 @@
       function init() {
         Unicorn.Load("bit", "./assets/bit.png");
         Unicorn.Load("gift", "./assets/gift.png");
+        Unicorn.Load("raid", "./assets/raid.png");
         ! function (e = "") {
             Unicorn.Load("speech", "assets/speech_bubble.png"), e && (e = "_" + e);
             for (var n = 0, t = 0; t < 23; t++) n + 1 < a[`idle${e}`].length && t === a[`idle${e}`][n + 1] && n++, Unicorn.Load("idle" + t, `./assets/idle${e}/idle` + ("0" + a[`idle${e}`][n]).slice(-2) + ".png");
@@ -240,14 +241,21 @@
         if( command === "testspeech" && user.toLowerCase() == "thatgravyboat") {speechMessage(message)}
         if( command === "tts" && user.toLowerCase() == "thatgravyboat") {speakMessage(message)}
       }
-      ComfyJS.onCheer = ( user, message, bits, flags, extra ) => {
-        speechMessage('Thanks for the bits ' + bits.displayName)
+      ComfyJS.onCheer =  ( user ) => {
         superlaunchConfetti(5)
       }
-      ComfyJS.onSubGift = ( gifterUser ) => {
-          speechMessage('Thanks for the gift sub(s) ' + gifterUser)
+      ComfyJS.onSub = ( user ) => {
           superlaunchConfetti(10, './assets/gift.png')
       }
+      ComfyJS.onSubGift = ( gifterUser ) => {
+          superlaunchConfetti(10, './assets/gift.png')
+      }
+      ComfyJS.onResub = ( user ) => {
+          superlaunchConfetti(10, './assets/gift.png')
+      }
+      ComfyJS.onRaid = ( user, viewers ) => {
+          superlaunchConfetti(2, './assets/raid.png')
+      } 
 
 
       async function speakMessage( message, ttsVoice = "Amy" ) {
