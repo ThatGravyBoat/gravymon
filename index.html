@@ -236,8 +236,9 @@
         
       }
       function OnChatCommand( user, command, message, flags, extra) {
-        if( command === "testsub" && user.toLowerCase() == "thatgravyboat") {onSubGift(message)}
-        if( command === "testcheer" && user.toLowerCase() == "thatgravyboat") {onCheer(message)}
+        if( command === "testsub" && user.toLowerCase() == "thatgravyboat") {superlaunchConfetti(10, './assets/gift.png')}
+        if( command === "testcheer" && user.toLowerCase() == "thatgravyboat") {superlaunchConfetti(5)}
+        if( command === "testraid" && user.toLowerCase() == "thatgravyboat") {superlaunchConfetti(2, './assets/raid.png')}
         if( command === "testspeech" && user.toLowerCase() == "thatgravyboat") {speechMessage(message)}
         if( command === "tts" && user.toLowerCase() == "thatgravyboat") {speakMessage(message)}
       }
