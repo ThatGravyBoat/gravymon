@@ -240,7 +240,6 @@
         if( command === "testcheer" && user.toLowerCase() == "thatgravyboat") {superlaunchConfetti(5)}
         if( command === "testraid" && user.toLowerCase() == "thatgravyboat") {superlaunchConfetti(2, './assets/raid.png')}
         if( command === "testspeech" && user.toLowerCase() == "thatgravyboat") {speechMessage(message)}
-        if( command === "tts" && user.toLowerCase() == "thatgravyboat") {speakMessage(message)}
       }
       ComfyJS.onCheer =  ( user ) => {
         //superlaunchConfetti(5)
@@ -257,24 +256,6 @@
       ComfyJS.onRaid = ( user, viewers ) => {
          // superlaunchConfetti(2, './assets/raid.png')
       } 
-
-
-      async function speakMessage( message, ttsVoice = "Amy" ) {
-        let speak = await fetch( `https://api.streamelements.com/kappa/v2/speech?voice=${ttsVoice}&text=` + encodeURIComponent( message.trim() ) );
-      	if( speak.status != 200 ) {
-      		// await speak.text();
-      		return;
-      	}
-
-        let mp3 = await speak.blob();
-        let blobUrl = URL.createObjectURL( mp3 );
-      	document.getElementById( "source" ).setAttribute( "src", blobUrl );
-      	let audio = document.getElementById( "audio" );
-      	audio.pause();
-      	audio.load();
-        audio.volume = 1;
-      	audio.play();
-      }
 
       window.addEventListener('load', () => {
         Unicorn.Create( "unicorn-display", {
