@@ -242,19 +242,24 @@
         if( command === "testspeech" && user.toLowerCase() == "thatgravyboat") {speechMessage(message)}
       }
       ComfyJS.onCheer =  ( user ) => {
-        //superlaunchConfetti(5)
+        superlaunchConfetti(5)
+        Unicorn.PlayObjectAnimation("robot", "wave")
       }
       ComfyJS.onSub = ( user ) => {
-          //superlaunchConfetti(10, './assets/gift.png')
+        superlaunchConfetti(10, './assets/gift.png')
+        Unicorn.PlayObjectAnimation("robot", "wave")
       }
       ComfyJS.onSubGift = ( gifterUser ) => {
-          //superlaunchConfetti(10, './assets/gift.png')
+        superlaunchConfetti(10, './assets/gift.png')
+        Unicorn.PlayObjectAnimation("robot", "wave")
       }
       ComfyJS.onResub = ( user ) => {
-          //superlaunchConfetti(10, './assets/gift.png')
+        superlaunchConfetti(10, './assets/gift.png')
+        Unicorn.PlayObjectAnimation("robot", "wave")
       }
       ComfyJS.onRaid = ( user, viewers ) => {
-         // superlaunchConfetti(2, './assets/raid.png')
+        superlaunchConfetti(2, './assets/raid.png')
+        Unicorn.PlayObjectAnimation("robot", "wave")
       } 
 
       window.addEventListener('load', () => {
